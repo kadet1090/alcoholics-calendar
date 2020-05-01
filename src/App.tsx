@@ -3,18 +3,21 @@ import moment, { Moment } from "moment";
 import 'moment/locale/pl'
 import { map } from "ramda";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlass } from "@fortawesome/pro-duotone-svg-icons";
+import { faGlass, faInfoCircle } from "@fortawesome/pro-duotone-svg-icons";
+import { createPortal } from "react-dom";
+import Modal from "./Modal";
+import Statistics from "./Statistics";
 
-const start = moment("2020-01-01 12:00")
-const end = moment("2021-01-01 12:00")
-const today = moment();
+export const start = moment("2020-01-01 12:00")
+export const end = moment("2021-01-01 12:00")
+export const today = moment();
 
-type DayInfo = {
+export type DayInfo = {
     date: Moment,
     drunk: boolean,
 }
 
-type Months = { [month: string]: DayInfo[] };
+export type Months = { [month: string]: DayInfo[] };
 
 const defaultMonths: Months = {};
 
@@ -56,7 +59,8 @@ function load(): Months {
 }
 
 const App = () => {
-    const [months, setMonths] = useState(load());
+    const [months, setMonths] = useState<Months>(load());
+    const [showStats, setShowStats] = useState<boolean>(false);
 
     const toggleDrunk = (day: DayInfo) => {
         const newMonths = {
@@ -75,9 +79,15 @@ const App = () => {
         ev.preventDefault();
     }
 
-    return (
+    const handleModalDismiss = () => setShowStats(false);
+    const handleStatisticsAction = () => setShowStats(true);
+
+    return <>
         <div className="app">
-            <h1 className="app__header">Kalendarz Alkoholika</h1>
+            <header className="app__header">
+                <h1 className="app__heading">Kalendarz Alkoholika</h1>
+                <a href="#statistics" className="app__action" onClick={ handleStatisticsAction }><FontAwesomeIcon icon={ faInfoCircle } /></a>
+            </header>
             <div className="app__calendar">
                 { Object.entries(months).map(([month, days]) => <div className="app__month" key={ month }>
                     <h2 className="app__month-name">{ month }</h2>
@@ -102,7 +112,13 @@ const App = () => {
                 </div>) }
             </div>
         </div>
-    );
+        { showStats && createPortal(
+            <Modal title="Statystyki" onClose={ handleModalDismiss } onLeave={ handleModalDismiss } id="statistics">
+                <Statistics months={ months }/>
+            </Modal>,
+            document.getElementById("modals") as HTMLElement
+        ) }
+    </>;
 }
 
 export default App;

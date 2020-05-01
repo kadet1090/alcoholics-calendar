@@ -10,8 +10,18 @@ $beer: #f6c13b;
   max-width: 90%;
 }
 
-.app__header {
+.app__heading {
   text-align: center;
+  flex: 1 1 auto;
+}
+
+.app__header {
+  display: flex;
+  align-items: center;
+}
+
+.app__action {
+  font-size: 1.5rem;
 }
 
 .app__calendar {
@@ -23,6 +33,7 @@ $beer: #f6c13b;
   flex: 1 1 auto;
   width: 33%;
   padding: 1rem;
+  min-width: 300px;
 }
 
 .app__month-name {
@@ -69,5 +80,5 @@ $beer: #f6c13b;
 .app__drunk-icon {
   position: absolute;
   bottom: 0;
-  right: -.25rem;
+  margin-left: .25rem;
 }

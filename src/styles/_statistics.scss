@@ -1,0 +1,32 @@
+.statistics__summary {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: -2rem;
+}
+
+.statistics__category {
+  flex: 1 0;
+  text-align: center;
+  min-width: 200px;
+  margin-bottom: 2rem;
+}
+
+.statistics__category--drunk {
+  @extend .app__day--drunk;
+}
+
+.statistics__label {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: .5rem 0;
+}
+
+.statistics__value {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: .5rem 0;
+}
+
+.statistics__value--secondary {
+  font-size: 1.2rem;
+}

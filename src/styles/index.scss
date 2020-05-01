@@ -12,5 +12,11 @@ code {
     monospace;
 }
 
+a {
+  color: black;
+}
+
 @import "~normalize.css";
 @import "app";
+@import "modal";
+@import "statistics";

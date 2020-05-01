@@ -1,0 +1,46 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(black, 0.2);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+.modal {
+  background: white;
+  margin: 100px auto;
+  width: 900px;
+  padding: 2rem;
+  box-shadow: 0 .25rem 1rem rgba(black, 0.5);
+  border: 1px solid rgba(black, .5);
+  border-radius: 3px;
+  position: relative;
+  max-width: 90%;
+}
+
+.modal__heading {
+  margin-top: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.modal__header {
+  display: flex;
+}
+
+.modal__close {
+  margin-left: auto;
+  border: none;
+  background: none;
+  padding: 1rem;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
