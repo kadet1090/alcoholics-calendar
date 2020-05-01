@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+
+.app {
+  margin: 100px auto;
+  width: 900px;
+  max-width: 90%;
+}
+
+.app__header {
+  text-align: center;
+}
+
+.app__calendar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.app__month {
+  flex: 1 1 auto;
+  width: 33%;
+  padding: 1rem;
+}
+
+.app__month-name {
+  text-align: center;
+}
+
+.app__days {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+
+  > * {
+    width: 1 / 7 * 100%;
+    margin-bottom: .75rem;
+  }
+}
+
+.app__day {
+  display: block;
+  padding: .5rem .25rem;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 100%;
+  color: black;
+  text-decoration: none;
+}
+
+.app__day--future {
+  opacity: .25;
+}
+
+.app__day--drunk {
+  background: #f6c13b;
+}
