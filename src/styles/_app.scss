@@ -1,3 +1,5 @@
+$beer: #f6c13b;
+
 * {
   box-sizing: border-box;
 }
@@ -48,6 +50,11 @@
   border-radius: 100%;
   color: black;
   text-decoration: none;
+  position: relative;
+
+  &:hover {
+    background-color: rgba($beer, 0.5);
+  }
 }
 
 .app__day--future {
@@ -55,5 +62,12 @@
 }
 
 .app__day--drunk {
-  background: #f6c13b;
+  --fa-secondary-color: #{$beer};
+  --fa-secondary-opacity: 1.0;
+}
+
+.app__drunk-icon {
+  position: absolute;
+  bottom: 0;
+  right: -.25rem;
 }

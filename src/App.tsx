@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import moment, { Moment } from "moment";
 import 'moment/locale/pl'
 import { map } from "ramda";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlass } from "@fortawesome/pro-duotone-svg-icons";
 
 const start = moment("2020-01-01 12:00")
 const end = moment("2021-01-01 12:00")
@@ -89,10 +91,11 @@ const App = () => {
                         <li>nd</li>
                     </ul>
                     <ul className="app__days">
-                        { filler(days).map(() => <li/>) }
+                        { filler(days).map((_, i) => <li key={`filler-${i}`}/>) }
                         { days.map(day => <li key={ day.date.format("YYYY-MM-DD")} id={`day${day.date.format("YYYYMMDD")}`}>
                             <a href={`#day${day.date.format("YYYYMMDD")}`} className={`app__day ${day.drunk && 'app__day--drunk'} ${today.isBefore(day.date) && 'app__day--future'}`} onClick={ handleDayClick(day) }>
                                 { day.date.format("D") }
+                                { day.drunk && <FontAwesomeIcon icon={ faGlass } className="app__drunk-icon"/> }
                             </a>
                         </li>) }
                     </ul>
